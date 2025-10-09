@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vibbsy — Promote local businesses, earn rewards</title>
+  <meta name="description" content="Vibbsy connects local businesses with passionate promoters. Businesses get authentic word-of-mouth marketing, promoters earn rewards for sharing what they love.">
+  
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Vibbsy — Promote local businesses, earn rewards">
+  <meta property="og:description" content="Connect local businesses with passionate promoters. Authentic word-of-mouth marketing meets real rewards.">
+  <meta property="og:url" content="https://vibbsy.com">
+  <meta property="og:image" content="https://vibbsy.com/og-image.jpg">
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Vibbsy — Promote local businesses, earn rewards">
+  <meta name="twitter:description" content="Connect local businesses with passionate promoters. Authentic word-of-mouth marketing meets real rewards.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Vibbsy",
+    "description": "Connect local businesses with passionate promoters",
+    "url": "https://vibbsy.com",
+    "logo": "https://vibbsy.com/logo.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "hello@vibbsy.com",
+      "contactType": "Customer Service"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Vibbsy",
+    "url": "https://vibbsy.com"
+  }
+  </script>
+  
+  <style>
+    :root {
+      --color-primary: #6366f1;
+      --color-primary-dark: #4f46e5;
+      --color-secondary: #10b981;
+      --color-text: #1f2937;
+      --color-text-light: #6b7280;
+      --color-bg: #ffffff;
+      --color-bg-alt: #f9fafb;
+      --color-border: #e5e7eb;
+      --color-error: #ef4444;
+      --color-success: #10b981;
+      --spacing-unit: 8px;
+      --max-width: 1200px;
+      --border-radius: 12px;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--color-text);
+      background: var(--color-bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    /* Animations with reduced motion support */
+    @media (prefers-reduced-motion: no-preference) {
+      .fade-in {
+        animation: fadeIn 0.6s ease-out;
+      }
+      
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+    
+    /* Typography */
+    h1, h2, h3 {
+      line-height: 1.2;
+      font-weight: 700;
+    }
+    
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: calc(var(--spacing-unit) * 3);
+    }
+    
+    h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: calc(var(--spacing-unit) * 3);
+    }
+    
+    h3 {
+      font-size: clamp(1.25rem, 2vw, 1.5rem);
+      margin-bottom: calc(var(--spacing-unit) * 2);
+    }
+    
+    p {
+      font-size: 1.125rem;
+      color: var(--color-text-light);
+      margin-bottom: calc(var(--spacing-unit) * 2);
+    }
+    
+    /* Layout */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 calc(var(--spacing-unit) * 3);
+    }
+    
+    section {
+      padding: calc(var(--spacing-unit) * 12) 0;
+    }
+    
+    /* Header */
+    header {
+      padding: calc(var(--spacing-unit) * 3) 0;
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-bg);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: calc(var(--spacing-unit) * 1.5);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-text);
+      text-decoration: none;
+    }
+    
+    /* Logo SVG placeholder - replace with your actual logo */
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+    }
+    
+    nav a {
+      margin-left: calc(var(--spacing-unit) * 4);
+      color: var(--color-text-light);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    
+    nav a:hover {
+      color: var(--color-primary);
+    }
+    
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 4);
+      border-radius: var(--border-radius);
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+    
+    .btn-primary {
+      background: var(--color-primary);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background: var(--color-primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    }
+    
+    .btn-primary:disabled {
+      background: var(--color-text-light);
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    .btn-secondary {
+      background: white;
+      color: var(--color-text);
+      border: 2px solid var(--color-border);
+    }
+    
+    .btn-secondary:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      transform: translateY(-2px);
+    }
+    
+    .cta-group {
+      display: flex;
+      gap: calc(var(--spacing-unit) * 2);
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    /* Hero */
+    .hero {
+      padding: calc(var(--spacing-unit) * 15) 0 calc(var(--spacing-unit) * 12);
+      text-align: center;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto calc(var(--spacing-unit) * 6);
+    }
+    
+    .hero h1 {
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--border-radius);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* How it Works */
+    .how-it-works {
+      background: var(--color-bg-alt);
+    }
+    
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: calc(var(--spacing-unit) * 6);
+      margin-top: calc(var(--spacing-unit) * 8);
+    }
+    
+    .step {
+      text-align: center;
+    }
+    
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      background: var(--color-primary);
+      color: white;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: calc(var(--spacing-unit) * 3);
+    }
+    
+    .step h3 {
+      color: var(--color-text);
+    }
+    
+    .step p {
+      font-size: 1rem;
+    }
+    
+    /* Benefits sections */
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: calc(var(--spacing-unit) * 4);
+      margin-top: calc(var(--spacing-unit) * 6);
+    }
+    
+    .benefit-card {
+      padding: calc(var(--spacing-unit) * 4);
+      background: white;
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius);
+      transition: all 0.3s;
+    }
+    
+    .benefit-card:hover {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      transform: translateY(-4px);
+    }
+    
+    .benefit-icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: calc(var(--spacing-unit) * 2);
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: calc(var(--spacing-unit) * 2);
+    }
+    
+    .section-subtitle {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto calc(var(--spacing-unit) * 6);
+      font-size: 1.25rem;
+    }
+    
+    /* Waitlist Form */
+    .waitlist {
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+      color: white;
+    }
+    
+    .waitlist h2,
+    .waitlist p {
+      color: white;
+    }
+    
+    .form-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      padding: calc(var(--spacing-unit) * 5);
+      border-radius: var(--border-radius);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    }
+    
+    .form-group {
+      margin-bottom: calc(var(--spacing-unit) * 3);
+    }
+    
+    label {
+      display: block;
+      margin-bottom: calc(var(--spacing-unit) * 1);
+      font-weight: 600;
+      color: var(--color-text);
+    }
+    
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: calc(var(--spacing-unit) * 1.5);
+      border: 2px solid var(--color-border);
+      border-radius: calc(var(--border-radius) / 2);
+      font-size: 1rem;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+    
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--color-primary);
+    }
+    
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+    
+    .optional {
+      color: var(--color-text-light);
+      font-weight: 400;
+      font-size: 0.875rem;
+    }
+    
+    .form-message {
+      padding: calc(var(--spacing-unit) * 2);
+      border-radius: calc(var(--border-radius) / 2);
+      margin-bottom: calc(var(--spacing-unit) * 3);
+      display: none;
+    }
+    
+    .form-message.success {
+      background: #d1fae5;
+      color: #065f46;
+      border: 1px solid #6ee7b7;
+    }
+    
+    .form-message.error {
+      background: #fee2e2;
+      color: #991b1b;
+      border: 1px solid #fca5a5;
+    }
+    
+    .form-message.show {
+      display: block;
+    }
+
+    .conditional-field {
+      display: none;
+    }
+
+    .conditional-field.show {
+      display: block;
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--color-text);
+      color: white;
+      padding: calc(var(--spacing-unit) * 8) 0 calc(var(--spacing-unit) * 4);
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: calc(var(--spacing-unit) * 6);
+      margin-bottom: calc(var(--spacing-unit) * 6);
+    }
+    
+    .footer-section h3 {
+      margin-bottom: calc(var(--spacing-unit) * 2);
+      color: white;
+    }
+    
+    .footer-section p,
+    .footer-section a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-size: 1rem;
+    }
+    
+    .footer-section a:hover {
+      color: white;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: calc(var(--spacing-unit) * 2);
+      margin-top: calc(var(--spacing-unit) * 2);
+    }
+    
+    .social-icon {
+      width: 24px;
+      height: 24px;
+      fill: rgba(255, 255, 255, 0.8);
+      transition: fill 0.2s;
+    }
+    
+    .social-icon:hover {
+      fill: white;
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: calc(var(--spacing-unit) * 4);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.875rem;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .cta-group {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+      
+      nav {
+        display: none;
+      }
+      
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      section {
+        padding: calc(var(--spacing-unit) * 8) 0;
+      }
+      
+      .hero {
+        padding: calc(var(--spacing-unit) * 10) 0 calc(var(--spacing-unit) * 8);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <a href="#" class="logo">
+          <svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="16" r="14" fill="#6366f1"/>
+            <path d="M12 10L20 16L12 22V10Z" fill="white"/>
+          </svg>
+          Vibbsy
+        </a>
+        
+        <nav>
+          <a href="#how-it-works">How It Works</a>
+          <a href="#businesses">For Businesses</a>
+          <a href="#promoters">For Promoters</a>
+          <a href="#waitlist">Join Waitlist</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero fade-in">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Turn word-of-mouth into your most powerful marketing channel</h1>
+          <p>Vibbsy connects local businesses with passionate promoters who genuinely love what you do. Build authentic community buzz while rewarding those who spread the word.</p>
+          <div class="cta-group">
+            <a href="#waitlist" class="btn btn-primary">I'm a Business</a>
+            <a href="#waitlist" class="btn btn-secondary">I'm a Promoter</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-it-works" class="how-it-works">
+      <div class="container">
+        <h2 class="section-title">How Vibbsy Works</h2>
+        <p class="section-subtitle">Get started in three simple steps and watch your community grow</p>
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h3>Connect</h3>
+            <p>Businesses create campaigns with rewards. Promoters discover local spots they're excited to share.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <h3>Promote</h3>
+            <p>Promoters share authentic content on social media, tag the business, and spread genuine enthusiasm.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <h3>Earn & Grow</h3>
+            <p>Track engagement, verify posts, and distribute rewards. Businesses grow, promoters earn perks they love.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="businesses">
+      <div class="container">
+        <h2 class="section-title">For Businesses</h2>
+        <p class="section-subtitle">Harness the power of authentic recommendations from your biggest fans</p>
+        <div class="benefits">
+          <div class="benefit-card">
+            <svg class="benefit-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="20" fill="#ddd6fe"/>
+              <path d="M24 14V24L30 30" stroke="#6366f1" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+            <h3>Authentic Marketing</h3>
+            <p>Real people sharing real experiences. No scripted ads, just genuine love for your brand.</p>
+          </div>
+          <div class="benefit-card">
+            <svg class="benefit-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="12" y="12" width="24" height="24" rx="4" fill="#d1fae5"/>
+              <path d="M20 24L23 27L28 21" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <h3>Measurable Results</h3>
+            <p>Track every post, engagement metric, and conversion. See exactly what's working.</p>
+          </div>
+          <div class="benefit-card">
+            <svg class="benefit-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="18" r="6" fill="#fed7aa"/>
+              <path d="M14 34C14 28 18 26 24 26C30 26 34 28 34 34" stroke="#f97316" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+            <h3>Build Community</h3>
+            <p>Transform customers into advocates. Create a loyal community that grows organically.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="promoters" class="how-it-works">
+      <div class="container">
+        <h2 class="section-title">For Promoters</h2>
+        <p class="section-subtitle">Get rewarded for sharing the local businesses you already love</p>
+        <div class="benefits">
+          <div class="benefit-card">
+            <svg class="benefit-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 10L28 18L37 19L30 26L32 35L24 30L16 35L18 26L11 19L20 18L24 10Z" fill="#fde047"/>
+            </svg>
+            <h3>Earn Real Rewards</h3>
+            <p>Get discounts, free products, exclusive access, and more from businesses you genuinely support.</p>
+          </div>
+          <div class="benefit-card">
+            <svg class="benefit-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="18" cy="18" r="6" fill="#bfdbfe"/>
+              <circle cx="30" cy="18" r="6" fill="#bfdbfe"/>
+              <circle cx="24" cy="30" r="6" fill="#bfdbfe"/>
+            </svg>
+            <h3>Discover Local Gems</h3>
+            <p>Find amazing local businesses and become part of their story from the ground up.</p>
+          </div>
+          <div class="benefit-card">
+            <svg class="benefit-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="12" y="16" width="24" height="20" rx="2" fill="#fbcfe8"/>
+              <path d="M18 16V14C18 11 20 9 24 9C28 9 30 11 30 14V16" stroke="#ec4899" stroke-width="3"/>
+            </svg>
+            <h3>Grow Your Influence</h3>
+            <p>Build your personal brand while supporting businesses that align with your values.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="waitlist" class="waitlist">
+      <div class="container">
+        <h2 class="section-title">Join the Waitlist</h2>
+        <p class="section-subtitle">Be among the first to experience Vibbsy. We're launching soon!</p>
+        <div class="form-container">
+          <div id="formMessage" class="form-message"></div>
+          
+          <form id="waitlistForm">
+            <div class="form-group">
+              <label for="name">Full Name *</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="userType">I am a... *</label>
+              <select id="userType" name="userType" required>
+                <option value="">Select an option</option>
+                <option value="business">Business Owner</option>
+                <option value="promoter">Promoter</option>
+                <option value="both">Both</option>
+              </select>
+            </div>
+            
+            <div class="form-group conditional-field" id="businessNameGroup">
+              <label for="businessName">Business Name <span class="optional">(Optional)</span></label>
+              <input type="text" id="businessName" name="businessName">
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Tell us more <span class="optional">(Optional)</span></label>
+              <textarea id="message" name="message" placeholder="What excites you about Vibbsy?"></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Join the Waitlist</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Vibbsy</h3>
+          <p>Connecting local businesses with passionate promoters to create authentic, community-driven marketing.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>Email: <a href="mailto:hello@vibbsy.com">hello@vibbsy.com</a></p>
+          <div class="social-links">
+            <a href="#" aria-label="Instagram">
+              <svg class="social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <rect x="2" y="2" width="20" height="20" rx="5"/>
+                <circle cx="12" cy="12" r="4"/>
+                <circle cx="18" cy="6" r="1"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="Twitter">
+              <svg class="social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+              <svg class="social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Company</h3>
+          <p><a href="#how-it-works">How It Works</a></p>
+          <p><a href="#businesses">For Businesses</a></p>
+          <p><a href="#promoters">For Promoters</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Vibbsy. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // IMPORTANT: Replace this URL with your Apps Script Web App URL
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzlNqmPcFHVebRM2SDTvY1ZxRK_g8BnPIPDWeoO1AFhtmm5_qdhHjjZP0V9Cq-FRz-e/exec';
+    
+    // Show/hide business name field based on user type
+    document.getElementById('userType').addEventListener('change', function() {
+      const businessNameGroup = document.getElementById('businessNameGroup');
+      const value = this.value;
+      
+      if (value === 'business' || value === 'both') {
+        businessNameGroup.classList.add('show');
+      } else {
+        businessNameGroup.classList.remove('show');
+      }
+    });
+    
+    // Handle form submission
+    document.getElementById('waitlistForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const submitButton = this.querySelector('button[type="submit"]');
+      const formMessage = document.getElementById('formMessage');
+      const originalButtonText = submitButton.textContent;
+      
+      // Disable button and show loading state
+      submitButton.disabled = true;
+      submitButton.textContent = 'Submitting...';
+      formMessage.classList.remove('show', 'success', 'error');
+      
+      // Collect form data
+      const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        userType: document.getElementById('userType').value,
+        businessName: document.getElementById('businessName').value,
+        message: document.getElementById('message').value
+      };
+      
+      try {
+        // Submit to Google Apps Script
+        const response = await fetch(SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors', // Important for Apps Script
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData)
+        });
+        
+        // Since we're using no-cors mode, we can't read the response
+        // But if we get here without an error, it likely worked
+        formMessage.textContent = 'Thank you for joining the waitlist! We\'ll be in touch soon.';
+        formMessage.classList.add('show', 'success');
+        
+        // Reset form
+        this.reset();
+        document.getElementById('businessNameGroup').classList.remove('show');
+        
+        // Scroll to message
+        formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        
+      } catch (error) {
+        console.error('Error:', error);
+        formMessage.textContent = 'Something went wrong. Please try again or email us at hello@vibbsy.com';
+        formMessage.classList.add('show', 'error');
+      } finally {
+        // Re-enable button
+        submitButton.disabled = false;
+        submitButton.textContent = originalButtonText;
+      }
+    });
+  </script>
+</body>
+</html>
