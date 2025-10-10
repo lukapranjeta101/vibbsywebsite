@@ -1,5 +1,5 @@
 // IMPORTANT: Replace this URL with your Apps Script Web App URL
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzlNqmPcFHVebRM2SDTvY1ZxRK_g8BnPIPDWeoO1AFhtmm5_qdhHjjZP0V9Cq-FRz-e/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxuaQibpB5ByTz9a5kYLerqAGQECLNeDbYPjRyye5ii6wYd_zAibxT88d8tcm4K5KLk/exec';
 
 // Show/hide business name field based on user type
 document.addEventListener('DOMContentLoaded', function() {
@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
-
   // Handle form submission
   const waitlistForm = document.getElementById('waitlistForm');
   if (waitlistForm) {
