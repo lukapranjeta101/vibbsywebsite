@@ -1,77 +1,61 @@
-// IMPORTANT: Replace this URL with your Apps Script Web App URL
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxuaQibpB5ByTz9a5kYLerqAGQECLNeDbYPjRyye5ii6wYd_zAibxT88d8tcm4K5KLk/exec';
+// Replace with your Apps Script deployment URL
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzxRV51KgsW_ovSOlnTGzSbkyp1phBR350hxL-6WatCMZCGnijd1Xmd5jvdDc1YyIqQ/exec';
 
-// Show/hide business name field based on user type
-document.addEventListener('DOMContentLoaded', function() {
-  const userType = document.getElementById('userType');
-  if (userType) {
-    userType.addEventListener('change', function() {
-      const businessNameGroup = document.getElementById('businessNameGroup');
-      const value = this.value;
-      if (value === 'business' || value === 'both') {
-        businessNameGroup.classList.add('show');
-      } else {
-        businessNameGroup.classList.remove('show');
-      }
-    });
+// Toggle business name field visibility
+const userTypeSelect = document.getElementById('userType');
+const businessNameGroup = document.getElementById('businessNameGroup');
+
+userTypeSelect.addEventListener('change', function() {
+  if (this.value === 'business' || this.value === 'both') {
+    businessNameGroup.classList.add('show');
+  } else {
+    businessNameGroup.classList.remove('show');
   }
-  // Handle form submission
-  const waitlistForm = document.getElementById('waitlistForm');
-  if (waitlistForm) {
-    waitlistForm.addEventListener('submit', async function(e) {
-      e.preventDefault();
+});
 
-      const submitButton = this.querySelector('button[type="submit"]');
-      const formMessage = document.getElementById('formMessage');
-      const originalButtonText = submitButton.textContent;
+// Form submission handler
+const form = document.getElementById('waitlistForm');
+const messageDiv = document.getElementById('formMessage');
 
-      // Disable button and show loading state
-      submitButton.disabled = true;
-      submitButton.textContent = 'Submitting...';
-      formMessage.classList.remove('show', 'success', 'error');
-
-      // Collect form data
-      const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        userType: document.getElementById('userType').value,
-        businessName: document.getElementById('businessName').value,
-        message: document.getElementById('message').value
-      };
-
-      try {
-        // Submit to Google Apps Script
-        // Use URL-encoded POST to avoid preflight and remove custom headers
-        const params = new URLSearchParams();
-        Object.keys(formData).forEach(k => params.append(k, formData[k] || ''));
-
-        await fetch(SCRIPT_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          body: params
-        });
-
-        // If we reach here without an exception the request was sent
-        formMessage.textContent = 'Thank you for joining the waitlist! We\'ll be in touch soon.';
-        formMessage.classList.add('show', 'success');
-
-        // Reset form
-        this.reset();
-        const businessNameGroup = document.getElementById('businessNameGroup');
-        if (businessNameGroup) businessNameGroup.classList.remove('show');
-
-        // Scroll to message
-        formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-      } catch (error) {
-        console.error('Error:', error);
-        formMessage.textContent = 'Something went wrong. Please try again or email us at hello@vibbsy.com';
-        formMessage.classList.add('show', 'error');
-      } finally {
-        // Re-enable button
-        submitButton.disabled = false;
-        submitButton.textContent = originalButtonText;
-      }
-    });
-  }
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+  
+  const submitBtn = form.querySelector('button[type="submit"]');
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Submitting...';
+  
+  messageDiv.classList.remove('show', 'success', 'error');
+  
+  const formData = {
+    name: document.getElementById('name').value,
+    email: document.getElementById('email').value,
+    userType: document.getElementById('userType').value,
+    businessName: document.getElementById('businessName').value,
+    message: document.getElementById('message').value
+  };
+  
+  fetch(APPS_SCRIPT_URL, {
+    method: 'POST',
+    body: JSON.stringify(formData)
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.status === 'success') {
+      messageDiv.textContent = data.message;
+      messageDiv.classList.add('show', 'success');
+      form.reset();
+      businessNameGroup.classList.remove('show');
+    } else {
+      throw new Error(data.message);
+    }
+  })
+  .catch(error => {
+    messageDiv.textContent = 'Something went wrong. Please try again.';
+    messageDiv.classList.add('show', 'error');
+    console.error('Error:', error);
+  })
+  .finally(() => {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Join the Waitlist';
+  });
 });
